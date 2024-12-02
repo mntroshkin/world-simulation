@@ -7,8 +7,8 @@ body {
 }
 
 header, footer {
-    background-color: #9993d4;
-    padding: 10px;
+    background-color: #a29dd4;
+    padding: 5px;
 }
 
 main {
@@ -31,14 +31,19 @@ main {
 }
 
 .tab {
-    padding: 0.2em 0.4em 0.2em 0.4em;
+    display:inline-block;
+    padding: 0.3em 0.2em 0.3em 0.4em;
     
     border-radius: 0.4em;
     border-width: 1px;
     background-color: #b2aedb;
 }
 
-.tab.active {
+.tab:hover {
+    background-color: #c3c1dd;
+}
+
+.tab.active, .tab.active:hover {
     background-color: #dedde9;
 }
 
@@ -48,4 +53,31 @@ main {
 
 .tab-panel.active {
     display: block;
+}
+
+.close-button {
+    display: inline;
+    margin-left: 0.1em;
+
+    border-style: none;
+    border-radius: 50%;
+
+    font-size: smaller;
+    font-weight: 900;
+
+    visibility: hidden;
+}
+
+.tab:hover .close-button {
+    visibility: visible;
+
+    background-color: #c3c1dd;
+}
+
+.tab.active:hover .close-button {
+    background-color: #dedde9;
+}
+
+.tab .close-button:hover, .tab.active .close-button:hover {
+    background-color: #a29dd4;
 }
