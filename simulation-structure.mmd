@@ -1,0 +1,66 @@
+classDiagram
+
+direction BT
+
+class Simulation {
+    date : Date
+    map : Map
+    citizens : Citizen[]
+    sites : Site[]
+    birth()
+    marry()
+    kill()
+    handle_births()
+    handle_marriages()
+    handle_death()
+    pass_month()
+}
+
+class Map {
+	height : int
+	width : int
+	tiles : MapTile[height][width]
+}
+
+Simulation o-- Map
+
+class MapTile {
+	symbol : str
+	terrain : TerrainType
+	sites_id : int[]
+}
+
+class TerrainType {
+	name : str
+	symbol : str
+}
+
+class Site {
+    id : int
+    name : str
+    symbol : str
+    coordinates : int[2]
+    citizens_id : int[]
+}
+
+Map o-- MapTile
+MapTile o-- TerrainType
+MapTile o-- Site
+
+class Citizen {
+    id : int
+    name : str
+    gender : [M, F]
+    birthDate : Date
+    alive : bool
+    deathDate : Optional[Date]
+    location_id : Optional[int]
+    parents_id : Optional[int[2]]
+    spouse_id : Optional[int]
+    children_id : int[]
+    age()
+}
+
+Citizen --o Site
+Simulation o-- Site
+Simulation o-- Citizen
