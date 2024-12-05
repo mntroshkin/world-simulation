@@ -8,9 +8,22 @@ body {
 
 header, footer {
     display: flex;
-    align-items: center;
     background-color: #a29dd4;
     padding: 5px;
+    white-space: nowrap;
+}
+
+#tab-menu {
+    overflow: hidden;
+    width: 100%;
+}
+
+#tab-wrapper {
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    max-width: calc(100vw - 3.2em);
+    margin-left: 1.25em;
 }
 
 main {
@@ -32,23 +45,56 @@ main {
     background-color: #c6c4d6;
 }
 
+.scroll-button {
+    display: flex;
+    align-items: center;
+    position: absolute;
+
+    cursor: default;
+    height: 2.25em;
+    padding: 0.3em 0.2em 0.3em 0.2em;
+
+    border: none;
+    border-radius: 0.4em;
+    background-color: #bfbddc;
+    z-index: 1;
+}
+
+.scroll-button:hover {
+    background-color: #c3c1dd;
+}
+
+.scroll-button.left {
+    left: 0.4em;
+}
+
+.scroll-button.right {
+    right: 0.4em;
+}
+
 .tab-name {
     display: inline;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
 }
 
 .tab {
     display: flex;
     align-items: center;
     height: 1.3em;
-    padding: 0.3em 0.2em 0.3em 0.4em;
+    max-width: 7.5em;
+    padding: 0.3em 0.2em 0.3em 0.2em;
     margin-left: 0.2em;
     margin-right: 0.2em;
 
     cursor: default;
     
     border-radius: 0.4em;
-    border-width: 1px;
     background-color: #b2aedb;
+}
+
+.tab.hidden {
+    display: none;
 }
 
 .tab:hover {
@@ -57,10 +103,6 @@ main {
 
 .tab.active, .tab.active:hover {
     background-color: #dedde9;
-}
-
-.tab-panel {
-    display: block;
 }
 
 .close-button {
