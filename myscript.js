@@ -43,7 +43,10 @@ class Tab {
   }
 
   close() {
-    this.tabContainer.classList.add("hidden");
+    tabWrapper.removeChild(this.tabContainer);
+
+    let index = openedTabs.indexOf(this);
+    openedTabs = openedTabs.slice(0, index).concat(openedTabs.slice(index + 1));
 
     if (this == activeTab) {
       const newActiveTab = (index < openedTabs.length) ? openedTabs[index] : openedTabs[index - 1];
