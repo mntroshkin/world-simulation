@@ -31,6 +31,8 @@ class Tab {
     openedTabs.push(this);
     this.makeActive();
     tabWrapper.insertBefore(this.tabContainer, null);
+
+    updateScrollVisibility();
   }
 
   makeActive() {
@@ -47,6 +49,8 @@ class Tab {
       const newActiveTab = (index < openedTabs.length) ? openedTabs[index] : openedTabs[index - 1];
       newActiveTab.makeActive();
     }
+
+    updateScrollVisibility();
   }
 }
 
@@ -54,8 +58,10 @@ const tabWrapper = document.getElementById("tab-wrapper");
 let openedTabs = [];
 let activeTab = undefined;
 
-const scrollLeft = document.getElementById('scroll-left');
-const scrollRight = document.getElementById('scroll-right');
+const scrollAmount = 150;
+let wrapperScroll = 0;
+const scrollLeftButton = document.getElementById('scroll-left');
+const scrollRightButton = document.getElementById('scroll-right');
 
 const mainTab = new Tab("main-tab", "Main Tab", "Hello, this is the main tab!", closable=false);
 
@@ -66,18 +72,28 @@ newTabLink.addEventListener('click', () => {
   newTab = new Tab(`tab${counter}`, `Tab #${counter}`, `Hello, this is the tab #${counter}!`);
 });
 
-const scrollAmount = 150;
+function updateScrollVisibility() {
+  const maxScrollLeft = tabWrapper.scrollWidth - tabWrapper.clientWidth;
+  scrollLeftButton.style.display = wrapperScroll > 0 ? 'flex' : 'none';
+  scrollRightButton.style.display = wrapperScroll < maxScrollLeft ? 'flex' : 'none';
+}
 
-scrollLeft.addEventListener('click', () => {
+scrollLeftButton.addEventListener('click', () => {
     tabWrapper.scrollBy({
         left: -scrollAmount,
         behavior: 'smooth'
     });
+    wrapperScroll -= scrollAmount;
+    updateScrollVisibility();
 });
 
-scrollRight.addEventListener('click', () => {
+scrollRightButton.addEventListener('click', () => {
     tabWrapper.scrollBy({
-          left: scrollAmount,
-          behavior: 'smooth'
+        left: scrollAmount,
+        behavior: 'smooth'
       });
+    wrapperScroll += scrollAmount;
+    updateScrollVisibility();
 });
+
+updateScrollVisibility();
