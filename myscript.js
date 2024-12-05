@@ -58,7 +58,7 @@ const tabWrapper = document.getElementById("tab-wrapper");
 let openedTabs = [];
 let activeTab = undefined;
 
-const scrollAmount = 150;
+const scrollAmount = 100;
 let wrapperScroll = 0;
 const scrollLeftButton = document.getElementById('scroll-left');
 const scrollRightButton = document.getElementById('scroll-right');
@@ -79,20 +79,20 @@ function updateScrollVisibility() {
 }
 
 scrollLeftButton.addEventListener('click', () => {
-    tabWrapper.scrollBy({
-        left: -scrollAmount,
+    wrapperScroll -= scrollAmount;
+    tabWrapper.scrollTo({
+        left: wrapperScroll,
         behavior: 'smooth'
     });
-    wrapperScroll -= scrollAmount;
     updateScrollVisibility();
 });
 
 scrollRightButton.addEventListener('click', () => {
-    tabWrapper.scrollBy({
-        left: scrollAmount,
+    wrapperScroll += scrollAmount;
+    tabWrapper.scrollTo({
+        left: wrapperScroll,
         behavior: 'smooth'
       });
-    wrapperScroll += scrollAmount;
     updateScrollVisibility();
 });
 
