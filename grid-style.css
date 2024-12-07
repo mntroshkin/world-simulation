@@ -1,4 +1,5 @@
 body {
+    font-size: 16px;
     margin: 0;
     display: grid;
     grid-template-rows: auto 1fr auto;
@@ -7,22 +8,22 @@ body {
 }
 
 header, footer {
-    display: flex;
     background-color: #a29dd4;
-    padding: 5px;
     white-space: nowrap;
+    padding: 7px;
 }
 
 #tab-menu {
     width: 100%;
-    padding-left: 1.9em;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    column-gap: 4px;
 }
 
 #tab-wrapper {
     display: flex;
     overflow-x: hidden;
     scroll-behavior: smooth;
-    max-width: calc(100vw - 3.8em);
 }
 
 main {
@@ -47,13 +48,12 @@ main {
 .scroll-button {
     display: flex;
     align-items: center;
-    position: absolute;
+    position: relative;
 
     cursor: default;
-    height: 2.25em;
-    padding: 0.3em 0.5em 0.3em 0.5em;
+    height: 2em;
+    padding: 0.2em 0.5em;
 
-    border: none;
     border-radius: 0.4em;
     background-color: #bfbddc;
     z-index: 1;
@@ -65,37 +65,22 @@ main {
     background-color: #c3c1dd;
 }
 
-.scroll-button.left {
-    left: 0.4em;
-}
-
-.scroll-button.right {
-    right: 0.4em;
-}
-
 .tab-name {
     display: inline;
-    margin-left: 0.2em;
-    margin-right: 0.2em;
+    padding: 0.2em;
 }
 
 .tab {
     display: flex;
     align-items: center;
-    height: 1.3em;
-    max-width: 7.5em;
-    padding: 0.3em 0.2em 0.3em 0.2em;
-    margin-left: 0.2em;
+    height: 2em;
     margin-right: 0.2em;
+    padding: 0.2em 0.2em;
 
     cursor: default;
     
     border-radius: 0.4em;
     background-color: #b2aedb;
-}
-
-.tab.hidden {
-    display: none;
 }
 
 .tab:hover {
@@ -131,7 +116,12 @@ main {
 }
 
 .link {
+    display: block;
     color: navy;
     text-decoration: underline;
     cursor: pointer;
+}
+
+.link.hidden {
+    display: none;
 }

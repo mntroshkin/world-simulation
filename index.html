@@ -8,20 +8,27 @@
     <script src="./myscript.js" defer></script>
   </head>
   <body>
-    <header id="tab-menu">
-        <button class="scroll-button left" id="scroll-left">&lt;</button>
-        <div id="tab-wrapper"></div>
-        <button class="scroll-button right" id="scroll-right">></button>
+    <header>
+      <div id="tab-menu">
+          <div class="scroll-button left" id="scroll-left">&ll;</div>
+          <div id="tab-wrapper"></div>
+          <div class="scroll-button right" id="scroll-right">&gg;</div>
+      </div>
     </header>
     <main>
       <section id="left-section">
         <div class="link" id="new-tab-link">
           Open new tab
         </div>
+        <div class="link hidden" id="go-up-link">
+          Go up
+        </div>
       </section>
       <section id="right-section">
       </section>
     </main>
-    <footer id="status-bar">Footer</footer>
+    <footer>
+      <div id="status-bar">Footer</footer>
+    </footer>
   </body>
 </html>
